@@ -54,16 +54,21 @@ return r;
 
 //function definition for multiplying two matrices
 Matrix mul(Matrix a,Matrix b){
-Matrix r(a.getrows(),a.getcolumn());
-for(int i=0;i<a.getrows();i++){
-	for(int j=0;j<a.getcolumn();j++){
-		for(int k=0;k<b.getcolumn();k++)
-		r.array[i][j]+=a.array[i][k]*b.array[j][k];
+Matrix r1(a.getrows(),a.getcolumn());
+int sum=0;
+int i,j,k=0;
+for(i=0;i<3;i++){
+	for(j=0;j<3;j++){
+		for(k=0;k<3;k++){
+		sum+=a.array[i][k]*b.array[k][j];
 					}
+		r1.array[i][j]=sum;
+		sum=0;
+			}
 			
 			}
 
-return r;
+return r1;
 
 }
 
@@ -106,6 +111,18 @@ for(int i=0;i<a.getrows();i++){
 					}
 
 				}
+
+Matrix res(3,3);
+res=mul(a,b);
+
+for(int i=0;i<a.getrows();i++){
+	for(int j=0;j<a.getcolumn();j++){
+		cout<<res.array[i][j]<<endl;		
+
+					}
+
+				}
+
 return 0;
 }
 
